@@ -1,0 +1,10 @@
+.header {
+  background: linear-gradient(90deg, #0f8f1a, #23be2f);
+}
+
+.logo {
+  grid-area: 1 / 2 / 2 / 3;
+  padding: 4px 0 8px;
+  font-size: 1.5rem;
+  color: #fff;
+}
