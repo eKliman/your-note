@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header'
 import Note from './containers/Note/Note';
-import NoteList from './containers/NoteList/NoteList';
+import Main from './containers/Main/Main';
 
 function App() {
   return (
@@ -10,7 +10,8 @@ function App() {
       <Header />
       <Switch>
         <Route path="/note/:id" component={Note} />
-        <Route path="/" exact component={NoteList} />
+        <Route path="/note" component={Note} />
+        <Route path="/" exact component={Main} />
       </Switch>
     </div>
   );

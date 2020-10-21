@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.scss'
-import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { applyMiddleware, compose, createStore } from 'redux'
-import rootReducer from './store/reducers/rootReducer'
-import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
 import { BrowserRouter } from 'react-router-dom'
+import App from './App'
+import rootReducer from './store/reducers/rootReducer'
+import './index.scss'
 
 const store = createStore(
   rootReducer,
