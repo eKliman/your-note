@@ -1,0 +1,10 @@
+$base-color1: #23be2f;
+$base-color2: #0f8f1a;
+$text-color: #333;
+$border-color: #ccc;
+
+%grid-container {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr minmax(320px, 1200px) 1fr;
+}

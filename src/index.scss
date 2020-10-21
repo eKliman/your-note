@@ -1,3 +1,6 @@
+@import './assets/styles/iconFont';
+@import './assets/styles/vars';
+
 html {
   box-sizing: border-box;
   font-size: 17px;
@@ -10,6 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: $text-color;
 }
 
 *,
@@ -55,17 +59,18 @@ a {
   "main";
 }
 
-.container {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr minmax(320px, 1200px) 1fr;
-  padding: 0 30px;
-}
-
 header {
   grid-area: header;
+  @extend %grid-container;
 }
 
 main {
   grid-area: main;
+  @extend %grid-container;
+  padding: 15px 0;
+}
+
+.container {
+  grid-area: 1 / 2 / 2 / 3;
+  padding: 0 30px;
 }
