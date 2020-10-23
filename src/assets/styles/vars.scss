@@ -1,10 +1,12 @@
-$base-color1: #23be2f;
-$base-color2: #0f8f1a;
+$base-color1: #00f813;
+$base-color2: #0fc41f;
 $text-color: #333;
 $border-color: #ccc;
+$danger-color: #ff4700;
+$secondary-color: #ddd;
 
 %grid-container {
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr minmax(320px, 1200px) 1fr;
+  grid-template-columns: 1fr minmax(320px, 1000px) 1fr;
 }

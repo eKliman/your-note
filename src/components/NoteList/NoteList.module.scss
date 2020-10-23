@@ -2,6 +2,18 @@
 
 .list {
   margin-top: 15px;
+  
+  button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 5;
+    color: $text-color !important;
+
+    &:hover, &:active, &:focus {
+      color: #ff0000 !important;
+    }
+  }
 }
 
 .item {
@@ -42,18 +54,4 @@
 
 .etc {
   margin-left: 10px;
-}
-
-.delete {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  padding: 5px;
-  font-size: 22px;
-  transition: 0.3s;
-  z-index: 5;
-
-  &:hover {
-    color: #ff0000;
-  }
 }

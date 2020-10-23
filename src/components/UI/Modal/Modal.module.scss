@@ -1,0 +1,56 @@
+@import '../../../assets/styles/vars';
+
+.modal {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  min-width: 280px;
+  max-width: 450px;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  background-color: #fff;
+  z-index: 100;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $secondary-color;
+  padding: 5px 15px;
+
+  h3 {
+    font-weight: 700;
+  }
+
+  span {
+    color: $danger-color;
+    font-size: 1.5rem;
+  }
+}
+
+.body {
+  padding: 20px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+@media (max-width: 700px) {
+  .modal {
+    width: 70%;
+  }
+}
+
+@media (max-width: 470px) {
+  .modal {
+    width: 90%;
+  }
+
+  .body {
+    padding: 15px;
+  }
+}

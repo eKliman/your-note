@@ -1,0 +1,102 @@
+@import '../../../assets/styles/vars';
+
+.button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px $border-color;
+  color: $text-color;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  transition: 0.3s;
+  cursor: pointer;
+
+  & + & {
+    margin-left: 10px;
+  }
+
+  &:focus, &:hover {
+    outline: none;
+  }
+}
+
+  .success {
+    border: 1px solid $base-color2;
+    background-color: $base-color2;
+    color: #fff;
+
+    &:focus, &:hover {
+      border: 1px solid #02a510;
+      background-color: #02a510;
+    }
+
+    &:active {
+      box-shadow: inset 2px 2px 2px #006609;
+    }
+  }
+
+  .secondary {
+    border: 1px solid $border-color;
+    background-color: $secondary-color;
+
+    &:focus, &:hover {
+      background-color: #fff;
+    }
+
+    &:active {
+      box-shadow: inset 2px 2px 2px $border-color;
+    }
+  }
+
+  .link {
+    border: none;
+    border-bottom: 1px solid #0000ff;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+    padding: 0;
+    padding-bottom: 1px;
+    color: #0000ff;
+    transition: 0.1s;
+
+    &:hover, &:focus {
+      border-bottom: 2px solid #0000ff;
+      padding-bottom: 0;
+    }
+
+    &:active {
+      border-bottom: 1px solid #0000ff;
+      padding-bottom: 1px;
+    }
+  }
+
+  .deleteIcon {
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    color: $danger-color;
+    font-size: 1.2rem;
+    
+    &:hover, &:focus {
+      transform: scale(1.15);
+    }
+
+    &:active {
+      transform: scale(0.85);
+    }
+  }
+
+  .danger {
+    border: 1px solid $danger-color;
+    background-color: $danger-color;
+    color: #fff;
+    
+    &:focus, &:hover {
+      border: 1px solid #d43c00;
+      background-color: #d43c00;
+    }
+
+    &:active {
+      box-shadow: inset 2px 2px 2px #992c00;
+    }
+  }

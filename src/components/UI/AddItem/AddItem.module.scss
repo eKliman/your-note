@@ -1,4 +1,4 @@
-@import '../../assets/styles/vars';
+@import '../../../assets/styles/vars';
 
 .link {
   display: flex;
@@ -10,7 +10,16 @@
   width: fit-content;
   transition: 0.3s;
 
-  &:hover {
+  &.small {
+    padding: 5px 15px;
+
+    .text {
+      font-weight: 600;
+    }
+  }
+
+  &:hover, &:focus {
+    outline: none;
     color: $base-color2;
   }
 

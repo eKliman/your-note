@@ -1,1 +1,9 @@
-.note {}
+.topButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bottomButtons {
+  margin-top: 20px;
+}
