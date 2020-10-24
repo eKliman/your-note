@@ -6,10 +6,10 @@ import classes from './Note.module.scss'
 
 const Note = () => {
   const noteData = {
-  title: 'Refresh knowledge about vanilla JS',
+  title: 'Refresh knowledge about vanilla JS. And I am not kidding',
   todos: [
     {
-      todo: 'Repeat Excel course',
+      todo: 'Repeat Excel course Repeat Excel course Repeat Excel course Repeat Excel course Repeat Excel course Repeat Excel course',
       done: false
     },
     {
@@ -27,42 +27,38 @@ const Note = () => {
   return (
     <main>
       <div className='container'>
-        <div className={classes.topButtons}>
-        <Button
-            text='&larr; Back to main'
-            type='link'
-            title='Return to main page'
-          ></Button>
-        <Button
-            text={<span className='icon-bin'></span>}
-            type='deleteIcon'
-            title='Delete note'
-          ></Button>
-        </div>
-        <ToDo 
-          text={noteData.title} 
-          isCheckboxNeeded={false}
-        />
-        <AddItem text='Add a new task' type='small'/>
-        {noteData.todos.map((item, i) => (
-          <ToDo 
-            key={i}
-            text={item.todo}
-            isChecked={item.done}
-          />
-        ))}
+        <div className={classes.note}>
+          <div className={classes.header}>
 
-        <div className={classes.bottomButtons}>
-          <Button
-            text='Save'
-            type='success'
-            title='Save changes'
-          ></Button>
-          <Button
-            text='Reset'
-            type='danger'
-            title='Undo changes'
-          ></Button>
+            <ToDo 
+              text={noteData.title} 
+              isCheckboxNeeded={false}
+            />
+          </div>
+          
+          <div className={classes.body}>
+            <AddItem text='Add subtask' type='small'/>
+            {noteData.todos.map((item, i) => (
+              <ToDo 
+                key={i}
+                text={item.todo}
+                isChecked={item.done}
+              />
+            ))}
+
+            <div className={classes.bottomButtons}>
+              <Button
+                text='Save note'
+                type='success'
+                title='Save note'
+              ></Button>
+              <Button
+                text='Undo changes'
+                type='danger'
+                title='Undo changes'
+              ></Button>
+            </div>
+          </div>
         </div>
       </div>
     </main>

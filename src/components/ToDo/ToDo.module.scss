@@ -1,24 +1,44 @@
 @import '../../assets/styles/vars';
 
 .toDo {
-  display: flex;
-  align-items: center;
   margin-top: 15px;
-  input[type=checkbox] {
-    margin-right: 7px;
-  }
-}
-
-.input {
-  border: none;
-  border-bottom: 1px solid $border-color;
+  padding: 8px;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px $border-color;
   width: 100%;
   font-size: 1rem;
 
+  input[type=checkbox] {
+    margin-right: 10px;
+  }
 }
 
 .title {
-  margin-bottom: 15px;
-  border-bottom: 2px solid $border-color;
-  font-size: 1.3rem;
+  border: none;
+  border-bottom: 3px solid $base-color2;
+  border-radius: 0px;
+  box-shadow: none;
+  margin-top: 0;
+
+  .text {
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 0.3px;
+  }
+}
+
+.buttons {
+  float: right;
+  position: relative;
+  top: -6px;
+  right: -6px;
+  display: flex;
+  align-items: center;  
+  justify-content: flex-end;
+  border-radius: 5px;
+
+  button + button {
+    margin-left: 5px;
+  }
 }

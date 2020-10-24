@@ -11,10 +11,6 @@
   transition: 0.3s;
   cursor: pointer;
 
-  & + & {
-    margin-left: 10px;
-  }
-
   &:focus, &:hover {
     outline: none;
   }
@@ -48,41 +44,36 @@
     }
   }
 
-  .link {
-    border: none;
-    border-bottom: 1px solid #0000ff;
-    border-radius: 0;
+  .deleteIcon, .btnIcon {
+    border: 1px solid $border-color;
+    background-color: #fff;
     box-shadow: none;
-    background-color: transparent;
-    padding: 0;
-    padding-bottom: 1px;
-    color: #0000ff;
-    transition: 0.1s;
-
-    &:hover, &:focus {
-      border-bottom: 2px solid #0000ff;
-      padding-bottom: 0;
-    }
+    padding: 5px 5px 4px 5px;
+    color: $text-color;
+    font-size: 1.2rem;
 
     &:active {
-      border-bottom: 1px solid #0000ff;
-      padding-bottom: 1px;
+      transform: scale(0.85);
     }
   }
 
   .deleteIcon {
-    border: none;
-    background-color: transparent;
-    box-shadow: none;
-    color: $danger-color;
-    font-size: 1.2rem;
-    
     &:hover, &:focus {
-      transform: scale(1.15);
+      color: $danger-color;
     }
 
     &:active {
-      transform: scale(0.85);
+      color: $danger-color;
+    }
+  }
+
+  .btnIcon {
+    &:hover, &:focus {
+      color: $base-color2;
+    }
+
+    &:active {
+      color: $base-color2;
     }
   }
 
