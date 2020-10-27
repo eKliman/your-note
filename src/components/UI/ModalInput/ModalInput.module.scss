@@ -16,7 +16,9 @@
 }
 
 .buttons {
-  button + button {
+  display: flex;
+  align-items: center;
+  button + button, button + a {
     margin-left: 15px;
   }
 }

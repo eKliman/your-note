@@ -1,66 +1,70 @@
 import React from 'react'
-import AddItem from '../../components/UI/AddItem/AddItem'
+import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../components/UI/Button/Button'
-import ToDo from '../../components/ToDo/ToDo'
+import Todo from '../../components/Todo/Todo'
+import ModalInput from '../../components/UI/ModalInput/ModalInput'
 import classes from './Note.module.scss'
+import { setIdEditingTodo } from '../../store/actions/note'
+import { idGenerator } from '../../utils/utils'
 
 const Note = () => {
-  const noteData = {
-  title: 'Refresh knowledge about vanilla JS. And I am not kidding',
-  todos: [
-    {
-      todo: 'Repeat Excel course Repeat Excel course Repeat Excel course Repeat Excel course Repeat Excel course Repeat Excel course',
-      done: false
-    },
-    {
-      todo: 'To be in focus',
-      done: true
-    },
-    {
-      todo: 'Work hard',
-      done: false
-    }
-  ],
-  id: 2
-}
+  const note = useSelector(state => state.note)
+  const dispatch = useDispatch()
+
+  const addTodoHandler = () => {
+    dispatch(setIdEditingTodo(idGenerator('todo')))
+  }
 
   return (
     <main>
       <div className='container'>
         <div className={classes.note}>
           <div className={classes.header}>
-
-            <ToDo 
-              text={noteData.title} 
-              isCheckboxNeeded={false}
+            <Todo 
+              text={note.title} 
+              isTodo={false}
             />
           </div>
           
           <div className={classes.body}>
-            <AddItem text='Add subtask' type='small'/>
-            {noteData.todos.map((item, i) => (
-              <ToDo 
-                key={i}
-                text={item.todo}
-                isChecked={item.done}
-              />
-            ))}
+            <Button
+              text={<><span className={`icon-plus`}></span> Add task</>}
+              classType='add'
+              title='Add task' 
+              clickHandler={addTodoHandler}
+            />
+
+            {
+              Object.keys(note.todos).map(key => (
+                <Todo 
+                  key={key}
+                  id={key}
+                  text={note.todos[key].text}
+                  isChecked={note.todos[key].done}
+                />
+              ))
+            }
 
             <div className={classes.bottomButtons}>
               <Button
                 text='Save note'
-                type='success'
+                classType='success'
                 title='Save note'
-              ></Button>
+              />
               <Button
                 text='Undo changes'
-                type='danger'
-                title='Undo changes'
-              ></Button>
+                classType='danger'
+                title='Undo changes' 
+              />
             </div>
           </div>
         </div>
       </div>
+      {
+        note.isTitleEditing || note.idEditingTodo
+          ? <ModalInput />
+          : ''
+      }
     </main>
   )
 }

@@ -58,7 +58,7 @@ const renderNotes = () =>
       </Link>
       <Button
         text={<span className='icon-bin'></span>}
-        type='deleteIcon'
+        classType='deleteIcon'
         title='Delete note'
       ></Button>
     </li>

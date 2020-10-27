@@ -21,13 +21,20 @@
     background-color: $base-color2;
     color: #fff;
 
-    &:focus, &:hover {
+    &:focus, &:hover:enabled {
       border: 1px solid #02a510;
       background-color: #02a510;
     }
 
     &:active {
       box-shadow: inset 2px 2px 2px #006609;
+    }
+
+    &:disabled {
+      border: 1px solid $border-color;
+      background-color: $secondary-color;
+      color: $text-color;
+      cursor: not-allowed;
     }
   }
 
@@ -68,12 +75,17 @@
   }
 
   .btnIcon {
-    &:hover, &:focus {
+    &:hover:enabled, &:focus {
       color: $base-color2;
     }
 
     &:active {
       color: $base-color2;
+    }
+
+    &:disabled {
+      opacity: 50%;
+      cursor: not-allowed;
     }
   }
 
@@ -89,5 +101,28 @@
 
     &:active {
       box-shadow: inset 2px 2px 2px #992c00;
+    }
+  }
+
+  .add {
+    display: flex;
+    align-items: center;
+    border: 1px solid $border-color;
+    border-radius: 50px;
+    padding: 7px 20px;
+    background-color: #fff;
+  
+    &:hover, &:focus {
+      outline: none;
+      color: $base-color2;
+    }
+  
+    &:active {
+      box-shadow: inset 2px 2px 2px $border-color;
+    }
+  
+    span {
+      margin-right: 7px;
+      color: $base-color2;
     }
   }

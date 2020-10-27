@@ -17,12 +17,12 @@ const Confirmation = ({message, buttonType1, buttonText1, buttonType2, buttonTex
           <div className={classes.buttons}>
             <Button
               text={buttonText1}
-              type={buttonType1}
+              classType={buttonType1}
               title={buttonText1}
             ></Button>
             <Button
               text={buttonText2}
-              type={buttonType2}
+              classType={buttonType2}
               title={buttonText2}
             ></Button>
           </div>
