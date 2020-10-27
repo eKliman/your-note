@@ -1,1 +1,25 @@
-.note {}
+@import '../../assets/styles/vars';
+
+.note {
+  border: 2px solid $base-color2;
+  border-radius: 5px;
+  box-shadow: 2px 2px 3px $base-color2;
+}
+
+.header {
+  padding: 5px 10px;
+}
+
+.body {
+  padding: 15px;
+}
+
+.bottomButtons {
+  button + button {
+    margin-left: 15px;
+  }
+}
+
+.bottomButtons {
+  margin-top: 20px; 
+}

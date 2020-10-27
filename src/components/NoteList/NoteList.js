@@ -1,22 +1,38 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Button from '../UI/Button/Button'
 import classes from './NoteList.module.scss'
 
 const list = [
   {
     title: 'Create awesome application',
     todos: [
-      'To be in focus',
-      'Work hard'
+      {
+        todo: 'To be in focus',
+        done: false
+      },
+      {
+        todo: 'Work hard',
+        done: true
+      }
     ],
     id: 1
   },
   {
     title: 'Refresh knowledge about vanila JS',
     todos: [
-      'Repeat Excel course',
-      'To be in focus',
-      'Work hard'
+      {
+        todo: 'Repeat Excel course',
+        done: false
+      },
+      {
+        todo: 'To be in focus',
+        done: true
+      },
+      {
+        todo: 'Work hard',
+        done: false
+      }
     ],
     id: 2
   },
@@ -35,12 +51,16 @@ const renderNotes = () =>
         <h3>{item.title}</h3>
         <ul>
         {item.todos.slice(0, 2).map((todo, i) => (
-          <li key={i} className={classes.todo}>&#10004; {todo}</li>
+          <li key={i} className={classes.todo}>&#10004; {todo.todo}</li>
           ))}
           {item.todos[2] && <span className={classes.etc}>&#10004; <b>. . .</b></span>}
         </ul>
       </Link>
-      <span className={`icon-bin ${classes.delete}`} title="Delete note"></span>
+      <Button
+        text={<span className='icon-bin'></span>}
+        classType='deleteIcon'
+        title='Delete note'
+      ></Button>
     </li>
   ))
 

@@ -6,12 +6,12 @@ import Main from './containers/Main/Main';
 
 function App() {
   return (
-    <div className="app">
+    <div className='app'>
       <Header />
       <Switch>
-        <Route path="/note/:id" component={Note} />
-        <Route path="/note" component={Note} />
-        <Route path="/" exact component={Main} />
+        <Route path='/note/:id' component={Note} />
+        <Route path='/note' component={Note} />
+        <Route path='/' exact component={Main} />
       </Switch>
     </div>
   );
