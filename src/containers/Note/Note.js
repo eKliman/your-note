@@ -1,18 +1,53 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import Button from '../../components/UI/Button/Button'
 import Todo from '../../components/Todo/Todo'
 import ModalInput from '../../components/UI/ModalInput/ModalInput'
-import classes from './Note.module.scss'
-import { setIdEditingTodo } from '../../store/actions/note'
+import { 
+  setTodos, 
+  setIdEditingTodo, 
+  setInitialState, 
+  setIsTitleEditing, 
+  setNoteTitle 
+} from '../../store/actions/note'
 import { idGenerator } from '../../utils/utils'
+import classes from './Note.module.scss'
+import Confirmation from '../../components/UI/Confirmation/Confirmation'
+import { saveNotesToStorage, setUndoNoteId } from '../../store/actions/noteList'
 
-const Note = () => {
-  const note = useSelector(state => state.note)
+const Note = props => {
   const dispatch = useDispatch()
+  const noteList = useSelector(state => state.noteList.notes)
+  const note = useSelector(state => state.note)
+  const deletionId = useSelector(state => state.noteList.deletionId)
+  const undoId = useSelector(state => state.noteList.undoId)
+  const id = props.match.params.id || idGenerator('note')
+  
+  useEffect(() => {
+    if (noteList[id]) {
+      dispatch(setNoteTitle(noteList[id].title))
+      dispatch(setTodos(JSON.parse(JSON.stringify(noteList[id].todos))))
+      dispatch(setIsTitleEditing(false))
+      return
+    }
+    dispatch(setIsTitleEditing(true))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [noteList])
+
+  useEffect(() => {
+    return () => dispatch(setInitialState())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const addTodoHandler = () => {
     dispatch(setIdEditingTodo(idGenerator('todo')))
+  }
+
+  const saveHandler = () => {
+    const data = {...noteList, [id]: {title: note.title, todos: note.todos}}
+    dispatch(saveNotesToStorage(data))
+    props.history.push('/')
   }
 
   return (
@@ -23,6 +58,7 @@ const Note = () => {
             <Todo 
               text={note.title} 
               isTodo={false}
+              id={id}
             />
           </div>
           
@@ -50,11 +86,15 @@ const Note = () => {
                 text='Save note'
                 classType='success'
                 title='Save note'
+                disabled={!note.isTouched}
+                clickHandler={saveHandler}
               />
               <Button
-                text='Undo changes'
+                text='Reset changes'
                 classType='danger'
-                title='Undo changes' 
+                title='Reset changes' 
+                disabled={!note.isTouched}
+                clickHandler={() => dispatch(setUndoNoteId(id))}
               />
             </div>
           </div>
@@ -65,8 +105,13 @@ const Note = () => {
           ? <ModalInput />
           : ''
       }
+      {
+        deletionId || undoId
+          ? <Confirmation />
+          : ''
+      }
     </main>
   )
 }
 
-export default Note
+export default withRouter(Note) 

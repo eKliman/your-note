@@ -2,9 +2,11 @@ import {
   SET_NOTE_TITLE, 
   SET_IS_TITLE_EDITING, 
   SET_ID_EDITING_TODO, 
-  ADD_NOTE, 
-  CHANGE_TODOS,
-  CHANGE_PREVIOUS_STATE
+  SET_INITIAL_STATE, 
+  SET_TODOS,
+  SET_PREV_TITLE,
+  SET_PREV_TODOS,
+  SET_IS_TOUCHED
 } from './actionTypes'
 
 export const setNoteTitle = payload => (
@@ -14,16 +16,23 @@ export const setNoteTitle = payload => (
   }
 )
 
-export const changePrevState = payload => (
+export const setPrevTitle = payload => (
   {
-    type: CHANGE_PREVIOUS_STATE,
+    type: SET_PREV_TITLE,
     payload
   }
 )
 
-export const changetodos = payload => (
+export const setPrevTodos = payload => (
   {
-    type: CHANGE_TODOS,
+    type: SET_PREV_TODOS,
+    payload
+  }
+)
+
+export const setTodos = payload => (
+  {
+    type: SET_TODOS,
     payload
   }
 )
@@ -42,9 +51,15 @@ export const setIdEditingTodo = payload => (
   }
 )
 
-export const addNote = payload => (
+export const setIsTouched = payload => (
   {
-    type: ADD_NOTE,
+    type: SET_IS_TOUCHED,
     payload
+  }
+)
+
+export const setInitialState = () => (
+  {
+    type: SET_INITIAL_STATE
   }
 )

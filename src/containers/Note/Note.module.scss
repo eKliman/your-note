@@ -23,3 +23,15 @@
 .bottomButtons {
   margin-top: 20px; 
 }
+
+@media (max-width: 360px) {
+  .bottomButtons {
+    button {
+      font-size: 0.9rem;
+    }
+
+    button + button {
+      margin-left: 10px;
+    }
+  }
+}

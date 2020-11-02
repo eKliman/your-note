@@ -1,8 +1,11 @@
 import React from 'react'
 import classes from './Backdrop.module.scss'
 
-const Backdrop = () => (
-  <div className={classes.backdrop}></div>
+const Backdrop = ({clickHandler}) => (
+  <div 
+    className={classes.backdrop}
+    onClick={clickHandler}
+  ></div>
 )
 
 export default Backdrop
