@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setIdEditingTodo, setIsTitleEditing, setNoteTitle, changetodos, changePrevState } from '../../../store/actions/note'
+import { 
+  setIdEditingTodo, 
+  setIsTitleEditing, 
+  setNoteTitle, setTodos, 
+  setPrevTitle, setPrevTodos, setIsTouched 
+} from '../../../store/actions/note'
 import Backdrop from '../Backdrop/Backdrop'
 import Button from '../Button/Button'
 import Input from '../Input/Input'
@@ -10,26 +15,25 @@ import classes from './ModalInput.module.scss'
 const ModalInput = () => {
   const dispatch = useDispatch()
   const inputRef = useRef(null)
-
   const note = useSelector(state => state.note)
   const todos = {...note.todos}
   const isTitleEditing = note.isTitleEditing
+  const prevTitle = {...note.prevTitle}
+  const prevTodos = {...note.prevTodos}
   let noteTitle = note.title
-
-  const prevState = {...note.prevState}
+  
+  const [value, setValue] = useState(startValue)
+  const [disabled, setDisabled] = useState(true)
 
   //Define start value for input
   let startValue
   if (isTitleEditing) {
     startValue = note.title
   } else {
-    startValue = note.todos[note.idEditingTodo] 
-      ? note.todos[note.idEditingTodo].text
+    startValue = todos[note.idEditingTodo] 
+      ? todos[note.idEditingTodo].text
       : ''
   }
-
-  const [value, setValue] = useState(startValue)
-  const [disabled, setDisabled] = useState(true)
 
   //Set the focus on input
   useEffect(() => inputRef.current.focus(), [])
@@ -51,27 +55,37 @@ const ModalInput = () => {
 
     if (isTitleEditing) {
       //Save to the previous state and display the undo/redo buttons for the title
-      prevState.title = noteTitle
-      prevState.redoTitleBtn = false
-        if(prevState.title) {
-          prevState.undoTitleBtn = true
+      prevTitle.title = noteTitle
+      prevTitle.redoTitleBtn = false
+        if(prevTitle.title) {
+          prevTitle.undoTitleBtn = true
         }
-      dispatch(changePrevState(prevState))
+      dispatch(setPrevTitle(prevTitle))
 
       //Work with the current title state
       noteTitle = value
       dispatch(setNoteTitle(noteTitle))
       dispatch(setIsTitleEditing(false))
+      dispatch(setIsTouched(true))
       return
     }
 
     //Create initial state for new Todo
-    if (note.idEditingTodo && !note.todos[note.idEditingTodo]) {
+    if (note.idEditingTodo && !todos[note.idEditingTodo]) {
       todos[note.idEditingTodo] = {
         text: '',
         done: false
       }
-      prevState.todos[note.idEditingTodo] = {
+      prevTodos[note.idEditingTodo] = {
+        text: '',
+        undoBtn: false,
+        redoBtn: false
+      }
+    }
+
+    //Create initial prevState for editing Todo
+    if (!prevTodos[note.idEditingTodo]) {
+      prevTodos[note.idEditingTodo] = {
         text: '',
         undoBtn: false,
         redoBtn: false
@@ -79,17 +93,18 @@ const ModalInput = () => {
     }
 
     //Save to the previous state and display the undo/redo buttons for the edited todo
-    prevState.todos[note.idEditingTodo].text = todos[note.idEditingTodo].text
-    prevState.todos[note.idEditingTodo].redoBtn = false
-        if(prevState.todos[note.idEditingTodo].text) {
-          prevState.todos[note.idEditingTodo].undoBtn = true
+    prevTodos[note.idEditingTodo].text = todos[note.idEditingTodo].text
+    prevTodos[note.idEditingTodo].redoBtn = false
+        if(prevTodos[note.idEditingTodo].text) {
+          prevTodos[note.idEditingTodo].undoBtn = true
         }
-    dispatch(changePrevState(prevState))
+    dispatch(setPrevTodos(prevTodos))
 
     //Work with the current state
     todos[note.idEditingTodo].text = value
-    dispatch(changetodos(todos))
+    dispatch(setTodos(todos))
     dispatch(setIdEditingTodo(''))
+    dispatch(setIsTouched(true))
   }
 
   const cancelHandler = () => {

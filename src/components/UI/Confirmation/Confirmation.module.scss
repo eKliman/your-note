@@ -5,9 +5,9 @@
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
-  min-width: 280px;
-  max-width: 450px;
+  width: 70%;
+  min-width: 290px;
+  max-width: 500px;
   border: 1px solid $border-color;
   border-radius: 5px;
   background-color: #fff;
@@ -33,21 +33,29 @@
 
 .body {
   padding: 20px;
+
+  p + p {
+    margin-top: 5px;
+  }
 }
 
 .buttons {
   margin-top: 20px;
+  
+  button + button {
+    margin-left: 15px;
+  }
 }
 
 @media (max-width: 700px) {
   .modal {
-    width: 70%;
+    width: 80%;
   }
 }
 
 @media (max-width: 470px) {
   .modal {
-    width: 90%;
+    width: 95%;
   }
 
   .body {

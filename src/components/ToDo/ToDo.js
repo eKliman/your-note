@@ -1,6 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setIdEditingTodo, setIsTitleEditing, changetodos, changePrevState } from '../../store/actions/note'
+import { setNoteIdToDelete } from '../../store/actions/noteList'
+import { 
+  setIdEditingTodo, 
+  setIsTitleEditing, 
+  setTodos, 
+  setPrevTodos, 
+  setPrevTitle, 
+  setIsTouched 
+} from '../../store/actions/note'
 import Button from '../UI/Button/Button'
 import classes from './Todo.module.scss'
 
@@ -8,7 +16,8 @@ const Todo = ({text = '', isChecked = false, isTodo = true, id = ''}) => {
   const dispatch = useDispatch()
   const note = useSelector(state => state.note)
   const todos = {...note.todos}
-  const prevState = {...note.prevState}
+  const prevTitle = {...note.prevTitle}
+  const prevTodos = {...note.prevTodos}
 
   const editHandler = () => {
     if (isTodo) {
@@ -21,26 +30,32 @@ const Todo = ({text = '', isChecked = false, isTodo = true, id = ''}) => {
   const deleteHandler = () => {
     if (isTodo) {
       delete todos[id]
-      dispatch(changetodos(todos))
+      dispatch(setTodos(todos))
+      return
     }
+
+    dispatch(setNoteIdToDelete(id))
   }
 
   const checkboxHandler = () => {
     todos[id].done = !isChecked
-    dispatch(changetodos(todos))
+    dispatch(setTodos(todos))
+    dispatch(setIsTouched(true))
   }
 
   const undoRedoHandler = () => {
     if (!isTodo) {
-      [note.title, prevState.title] = [prevState.title, note.title]
-      prevState.undoTitleBtn = !prevState.undoTitleBtn
-      prevState.redoTitleBtn = !prevState.redoTitleBtn
-    } else {
-      [todos[id].text, prevState.todos[id].text] = [prevState.todos[id].text, todos[id].text]
-      prevState.todos[id].undoBtn = !prevState.todos[id].undoBtn
-      prevState.todos[id].redoBtn = !prevState.todos[id].redoBtn
+      [note.title, prevTitle.title] = [prevTitle.title, note.title]
+      prevTitle.undoTitleBtn = !prevTitle.undoTitleBtn
+      prevTitle.redoTitleBtn = !prevTitle.redoTitleBtn
+      dispatch(setPrevTitle(prevTitle))
+      return
     }
-    dispatch(changePrevState(prevState))
+
+    [todos[id].text, prevTodos[id].text] = [prevTodos[id].text, todos[id].text]
+    prevTodos[id].undoBtn = !prevTodos[id].undoBtn
+    prevTodos[id].redoBtn = !prevTodos[id].redoBtn
+    dispatch(setPrevTodos(prevTodos))
   }
 
   const cls = [classes.todo]
@@ -54,8 +69,8 @@ const Todo = ({text = '', isChecked = false, isTodo = true, id = ''}) => {
     <div className={cls.join(' ')}>
       <div className={classes.buttons}>
         {
-          (prevState.undoTitleBtn && !isTodo) || 
-          (prevState.todos[id] && (prevState.todos[id].undoBtn && isTodo))
+          (prevTitle.undoTitleBtn && !isTodo) || 
+          (prevTodos[id] && (prevTodos[id].undoBtn && isTodo))
             ? <Button
               text={<span className="icon-undo2"></span>}
               classType='btnIcon'
@@ -66,8 +81,8 @@ const Todo = ({text = '', isChecked = false, isTodo = true, id = ''}) => {
             : ''
         }
         {
-          (prevState.redoTitleBtn && !isTodo) || 
-          (prevState.todos[id] && (prevState.todos[id].redoBtn && isTodo))
+          (prevTitle.redoTitleBtn && !isTodo) || 
+          (prevTodos[id] && (prevTodos[id].redoBtn && isTodo))
             ? <Button
               text={<span className="icon-redo2"></span>}
               classType='btnIcon'
@@ -96,7 +111,7 @@ const Todo = ({text = '', isChecked = false, isTodo = true, id = ''}) => {
       {
         isTodo 
           ? <>
-            <input type='checkbox' checked={isChecked} onChange={checkboxHandler} id={id}></input>
+            <input type='checkbox' checked={isChecked} onChange={checkboxHandler} id={id} />
             <label htmlFor={id} />
           </> 
           : ''

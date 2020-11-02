@@ -1,8 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import NoteList from '../../components/NoteList/NoteList'
+import Confirmation from '../../components/UI/Confirmation/Confirmation'
 import LinkButton from '../../components/UI/LinkButton/LinkButton'
 
 const Main = () => {
+  const deletionId = useSelector(state => state.noteList.deletionId)
+
   return (
     <main>
       <div className='container'>
@@ -14,6 +18,12 @@ const Main = () => {
         />
         <NoteList />
       </div>
+
+      {
+        deletionId
+          ? <Confirmation />
+          : ''
+      }
     </main>
   )
 }
