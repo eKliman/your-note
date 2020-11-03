@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Button from '../../components/UI/Button/Button'
-import Todo from '../../components/Todo/Todo'
+import Todo from '../../components/ToDo/ToDo'
 import ModalInput from '../../components/UI/ModalInput/ModalInput'
 import { 
   setTodos, 

@@ -1,8 +1,11 @@
+import { SET_THEME } from "../actions/actionTypes"
+
 const initialState = {
-  test: {}
+  darkTheme: false
 }
 
 const handlers = {
+  [SET_THEME]: (state, action) => ({...state, darkTheme: action.payload}),
   DEFAULT: state => state
 }
 

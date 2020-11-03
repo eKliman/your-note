@@ -1,10 +1,8 @@
-@import '../../../assets/styles/vars';
-
 .link {
   padding: 3px 10px 5px 10px;
   border-radius: 5px;
-  box-shadow: 2px 2px 2px $border-color;
-  color: $text-color;
+  box-shadow: 2px 2px 2px var(--border-color);
+  color: var(--text-color);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.7px;
@@ -17,8 +15,8 @@
 }
 
 .danger {
-  border: 1px solid $danger-color;
-  background-color: $danger-color;
+  border: 1px solid var(--danger-color);
+  background-color: var(--danger-color);
   color: #fff;
   
   &:focus, &:hover {
@@ -34,8 +32,9 @@
 .add {
   display: flex;
   align-items: center;
-  border: 1px solid $border-color;
+  border: 1px solid var(--addBtn-color);
   border-radius: 50px;
+  box-shadow: 2px 2px 2px var(--addBtn-color);
   margin-bottom: 15px;
   padding: 15px 40px;
   width: fit-content;
@@ -44,15 +43,16 @@
 
   &:hover, &:focus {
     outline: none;
-    color: $base-color2;
+    background-color: var(--hover-color);
+    color: #0fc41f;
   }
 
   &:active {
-    box-shadow: inset 2px 2px 2px $border-color;
+    box-shadow: inset 2px 2px 2px var(--addBtn-color);
   }
 
   span {
     margin-right: 10px;
-    color: $base-color2;
+    color: var(--success-color);
   }
 }

@@ -1,9 +1,8 @@
-@import '../../assets/styles/vars';
-
 .note {
-  border: 2px solid $base-color2;
+  border: 2px solid var(--border-color);
   border-radius: 5px;
-  box-shadow: 2px 2px 3px $base-color2;
+  box-shadow: 2px 2px 3px var(--border-color);
+  color: var(--text-color);
 }
 
 .header {

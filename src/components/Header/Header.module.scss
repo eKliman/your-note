@@ -1,11 +1,11 @@
-@import '../../assets/styles/vars';
-
 .header {
-  background: linear-gradient(90deg, $base-color2, $base-color1);
+  background: linear-gradient(90deg, var(--base-color2), var(--base-color1));
 }
 
 .inner {
-  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo {

@@ -10,7 +10,7 @@ import {
   setIsTouched 
 } from '../../store/actions/note'
 import Button from '../UI/Button/Button'
-import classes from './Todo.module.scss'
+import classes from './ToDo.module.scss'
 
 const Todo = ({text = '', isChecked = false, isTodo = true, id = ''}) => {
   const dispatch = useDispatch()

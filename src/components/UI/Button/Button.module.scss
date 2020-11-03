@@ -1,10 +1,8 @@
-@import '../../../assets/styles/vars';
-
 .button {
   padding: 5px 10px;
   border-radius: 5px;
-  box-shadow: 2px 2px 2px $border-color;
-  color: $text-color;
+  box-shadow: 2px 2px 2px var(--border-color);
+  color: var(--text-color);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.7px;
@@ -17,8 +15,9 @@
 }
 
   .success {
-    border: 1px solid $base-color2;
-    background-color: $base-color2;
+    border: 1px solid var(--success-color);
+    background-color: var(--success-color);
+    box-shadow: 2px 2px 2px #006609;
     color: #fff;
 
     &:focus, &:hover:enabled {
@@ -31,56 +30,61 @@
     }
 
     &:disabled {
-      border: 1px solid $border-color;
-      background-color: $secondary-color;
-      color: $text-color;
+      border: 1px solid var(--border-color);
+      background-color: var(--border-color);
+      box-shadow: 2px 2px 2px var(--border-color);
+      color: var(--text-color);
       cursor: not-allowed;
     }
   }
 
   .secondary {
-    border: 1px solid $border-color;
-    background-color: $secondary-color;
+    border: 1px solid var(--border-color);
+    background-color: var(--border-color);
 
     &:focus, &:hover {
-      background-color: #fff;
+      background-color: var(--bg-color);
     }
 
     &:active {
-      box-shadow: inset 2px 2px 2px $border-color;
+      box-shadow: inset 2px 2px 2px var(--border-color);
     }
   }
 
   .deleteIcon, .btnIcon {
-    border: 1px solid $border-color;
-    background-color: #fff;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
     box-shadow: none;
     padding: 5px 5px 4px 5px;
-    color: $text-color;
+    color: var(--text-color);
     font-size: 1.2rem;
 
     &:active {
       transform: scale(0.85);
     }
+
+    &:hover, &:focus {
+      background-color: var(--hover-color);
+    }
   }
 
   .deleteIcon {
     &:hover, &:focus {
-      color: $danger-color;
+      color: var(--danger-color);
     }
 
     &:active {
-      color: $danger-color;
+      color: var(--danger-color);
     }
   }
 
   .btnIcon {
     &:hover:enabled, &:focus {
-      color: $base-color2;
+      color: #0fc41f;;
     }
 
     &:active {
-      color: $base-color2;
+      color: #0fc41f;;
     }
 
     &:disabled {
@@ -90,8 +94,9 @@
   }
 
   .danger {
-    border: 1px solid $danger-color;
-    background-color: $danger-color;
+    border: 1px solid var(--danger-color);
+    background-color: var(--danger-color);
+    box-shadow: 2px 2px 2px #992c00;
     color: #fff;
     
     &:focus, &:hover {
@@ -104,9 +109,10 @@
     }
 
     &:disabled {
-      border: 1px solid $border-color;
-      background-color: $secondary-color;
-      color: $text-color;
+      border: 1px solid var(--border-color);
+      background-color: var(--border-color);
+      box-shadow: 2px 2px 2px var(--border-color);
+      color: var(--text-color);
       cursor: not-allowed;
     }
   }
@@ -114,22 +120,25 @@
   .add {
     display: flex;
     align-items: center;
-    border: 1px solid $border-color;
+    border: 1px solid var(--addBtn-color);
     border-radius: 50px;
     padding: 7px 20px;
-    background-color: #fff;
+    box-shadow: 2px 2px 2px var(--addBtn-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
   
     &:hover, &:focus {
       outline: none;
-      color: $base-color2;
+      background-color: var(--hover-color);
+      color: #0fc41f;
     }
   
     &:active {
-      box-shadow: inset 2px 2px 2px $border-color;
+      box-shadow: inset 2px 2px 2px var(--addBtn-color);
     }
   
     span {
       margin-right: 7px;
-      color: $base-color2;
+      color: var(--success-color);
     }
   }
