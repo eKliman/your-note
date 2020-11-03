@@ -22,9 +22,6 @@ const ModalInput = () => {
   const prevTodos = {...note.prevTodos}
   let noteTitle = note.title
   
-  const [value, setValue] = useState(startValue)
-  const [disabled, setDisabled] = useState(true)
-
   //Define start value for input
   let startValue
   if (isTitleEditing) {
@@ -34,6 +31,8 @@ const ModalInput = () => {
       ? todos[note.idEditingTodo].text
       : ''
   }
+  const [value, setValue] = useState(startValue)
+  const [disabled, setDisabled] = useState(true)
 
   //Set the focus on input
   useEffect(() => inputRef.current.focus(), [])

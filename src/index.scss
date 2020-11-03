@@ -13,7 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: $text-color;
+  color: var(--text-color);
 }
 
 *,
@@ -68,6 +68,22 @@ main {
   grid-area: main;
   @extend %grid-container;
   padding: 15px 0;
+}
+
+.app.dark {
+  --base-color1: #121212;
+  --base-color2: #121212;
+  --text-color: #fff;
+  --border-color: #777;
+  --bg-color: #1e222d;
+  --hover-color: #121212;  
+  --addBtn-color: #000;
+  --toggle-color: #ccc;
+}
+
+main {
+  min-height: 100vh;
+  background-color: var(--bg-color);
 }
 
 .container {

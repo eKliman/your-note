@@ -1,9 +1,15 @@
-$base-color1: #00f813;
-$base-color2: #0fc41f;
-$text-color: #333;
-$border-color: #ccc;
-$danger-color: #ff4700;
-$secondary-color: #ddd;
+:root {
+  --base-color1: #00f813;
+  --base-color2: #0fc41f;
+  --text-color: #333;
+  --border-color: #ccc;
+  --danger-color: #ff4700;
+  --bg-color: #fff;
+  --hover-color: #eee;
+  --success-color: #0fc41f;
+  --addBtn-color: #ccc;
+  --toggle-color: #fff;
+}
 
 %grid-container {
   display: grid;

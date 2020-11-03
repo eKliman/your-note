@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ThemeSwitch from '../UI/ThemeSwitch/ThemeSwitch'
 import classes from './Header.module.scss'
 
 const Header = () => {
@@ -10,6 +11,9 @@ const Header = () => {
           <Link to='/' className={classes.logo}>
             <span><strong>Your Note</strong></span>
           </Link>
+          <div className={classes.buttons}>
+            <ThemeSwitch />
+          </div>
         </div>
       </div>
     </header>
