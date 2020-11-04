@@ -8,9 +8,16 @@ import classes from './NoteList.module.scss'
 const NoteList = () => {
   const dispatch = useDispatch()
   const noteList = useSelector(state => state.noteList.notes)
+  const sorting = useSelector(state => state.noteList.sorting)
+
+  // Sorting tasks
+  let noteListKeys = Object.keys(noteList)
+  if (sorting === 'Newest') {
+    noteListKeys = noteListKeys.reverse()
+  }
 
   const renderNotes = () => {
-    return Object.keys(noteList).map(key => (
+    return noteListKeys.map(key => (
       <li 
         key={key} 
         className={classes.item}

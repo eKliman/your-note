@@ -6,7 +6,8 @@ import {
   SET_TODOS,
   SET_PREV_TITLE,
   SET_PREV_TODOS,
-  SET_IS_TOUCHED
+  SET_IS_TOUCHED,
+  SET_SORTING
 } from './actionTypes'
 
 export const setNoteTitle = payload => (
@@ -54,6 +55,13 @@ export const setIdEditingTodo = payload => (
 export const setIsTouched = payload => (
   {
     type: SET_IS_TOUCHED,
+    payload
+  }
+)
+
+export const setSorting = payload => (
+  {
+    type: SET_SORTING,
     payload
   }
 )

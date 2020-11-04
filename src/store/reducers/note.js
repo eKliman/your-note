@@ -6,7 +6,8 @@ import {
   SET_TODOS,
   SET_PREV_TITLE,
   SET_PREV_TODOS,
-  SET_IS_TOUCHED
+  SET_IS_TOUCHED,
+  SET_SORTING
 } from '../actions/actionTypes'
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   isTitleEditing: false,
   idEditingTodo: '',
   isTouched: false,
+  sorting: 'Newest',
   prevTitle: {
     itle: '',
     undoTitleBtn: false,
@@ -31,6 +33,7 @@ const handlers = {
   [SET_IS_TITLE_EDITING]: (state, action) => ({...state, isTitleEditing: action.payload}),
   [SET_ID_EDITING_TODO]: (state, action) => ({...state, idEditingTodo: action.payload}),
   [SET_IS_TOUCHED]: (state, action) => ({...state, isTouched: action.payload}),
+  [SET_SORTING]: (state, action) => ({...state, sorting: action.payload}),
   [SET_INITIAL_STATE]: () => (initialState),
   DEFAULT: state => state
 }

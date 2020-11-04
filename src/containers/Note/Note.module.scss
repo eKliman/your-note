@@ -13,6 +13,12 @@
   padding: 15px;
 }
 
+.panel {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
 .bottomButtons {
   button + button {
     margin-left: 15px;

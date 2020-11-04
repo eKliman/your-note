@@ -1,7 +1,8 @@
 import { 
   SET_NOTES,
   SET_NOTE_ID_TO_DELETE,
-  SET_UNDO_NOTE_ID
+  SET_UNDO_NOTE_ID,
+  SET_SORTING_NOTELIST
 } from './actionTypes'
 
 export const setNotes = payload => (
@@ -44,6 +45,13 @@ export const deleteFromStorage = payload => {
 export const setUndoNoteId = payload => (
   {
     type: SET_UNDO_NOTE_ID,
+    payload
+  }
+)
+
+export const setSortingNoteList = payload => (
+  {
+    type: SET_SORTING_NOTELIST,
     payload
   }
 )

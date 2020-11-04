@@ -9,12 +9,14 @@ import {
   setIdEditingTodo, 
   setInitialState, 
   setIsTitleEditing, 
-  setNoteTitle 
+  setNoteTitle, 
+  setSorting
 } from '../../store/actions/note'
-import { idGenerator } from '../../utils/utils'
-import classes from './Note.module.scss'
+import { idGenerator, sortDone, sortInProgress } from '../../utils/utils'
 import Confirmation from '../../components/UI/Confirmation/Confirmation'
+import Select from '../../components/UI/Select/Select'
 import { saveNotesToStorage, setUndoNoteId } from '../../store/actions/noteList'
+import classes from './Note.module.scss'
 
 const Note = props => {
   const dispatch = useDispatch()
@@ -22,6 +24,7 @@ const Note = props => {
   const note = useSelector(state => state.note)
   const deletionId = useSelector(state => state.noteList.deletionId)
   const undoId = useSelector(state => state.noteList.undoId)
+  const sorting = useSelector(state => state.note.sorting)
   const id = props.match.params.id || idGenerator('note')
   
   useEffect(() => {
@@ -40,6 +43,16 @@ const Note = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // Sorting tasks
+  let todosKeys = Object.keys(note.todos)
+  if (sorting === 'Newest') {
+    todosKeys = todosKeys.reverse()
+  } else if (sorting === 'Done') {
+    todosKeys = todosKeys.sort((a, b) => sortDone(a, b, note.todos))
+  } else if (sorting === 'In progress') {
+    todosKeys = todosKeys.sort((a, b) => sortInProgress(a, b, note.todos))
+  }
+
   const addTodoHandler = () => {
     dispatch(setIdEditingTodo(idGenerator('todo')))
   }
@@ -48,6 +61,10 @@ const Note = props => {
     const data = {...noteList, [id]: {title: note.title, todos: note.todos}}
     dispatch(saveNotesToStorage(data))
     props.history.push('/')
+  }
+
+  const changeSortHandler = value => {
+    dispatch(setSorting(value))
   }
 
   return (
@@ -63,15 +80,23 @@ const Note = props => {
           </div>
           
           <div className={classes.body}>
-            <Button
-              text={<><span className={`icon-plus`}></span> Add task</>}
-              classType='add'
-              title='Add task' 
-              clickHandler={addTodoHandler}
-            />
+            <div className={classes.panel}>
+              <Button
+                text={<><span className={`icon-plus`}></span> Add task</>}
+                classType='add'
+                title='Add task' 
+                clickHandler={addTodoHandler}
+              />
+
+              <Select 
+                changeHandler={changeSortHandler}
+                options={['Newest', 'Oldest', 'Done', 'In progress']}
+                sorting={sorting}
+              />
+            </div>
 
             {
-              Object.keys(note.todos).map(key => (
+              todosKeys.map(key => (
                 <Todo 
                   key={key}
                   id={key}

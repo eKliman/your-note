@@ -1,0 +1,45 @@
+.wrapper {
+  position: relative;
+  width: 100px;
+
+  &::after {
+    content: "\25BC";
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+    color: var(--text-color);
+    font-size: 0.8rem;
+    cursor: pointer;
+    pointer-events: none;
+  }
+}
+
+.select {
+  display: block;
+  appearance: none;
+  width: 100%;
+  padding: 5px 22px 5px 5px;
+  border-radius: 4px;
+  border: 1px solid var(--addBtn-color);
+  box-shadow: 2px 2px 2px var(--addBtn-color);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 0.9rem;
+  letter-spacing: 0.1px;
+  outline: none;
+  cursor: pointer;
+  
+  &::-ms-expand {
+    display: none;
+  }
+  &:hover {
+    border-color: #888;
+  }
+  &:focus {
+    box-shadow: 0px 0px 5px 1px #fff;
+  }
+  option {
+    color: var(--text-color);
+  }
+}
