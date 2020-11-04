@@ -41,7 +41,7 @@
   height: 0;
   
   &:focus + .slider {
-    box-shadow: 2px 1px 5px #fff;
+    box-shadow: 0px 0px 5px 1px #fff;
   }
   
   &:checked + .slider::before {

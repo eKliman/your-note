@@ -39,11 +39,12 @@
   }
 
   .secondary {
-    border: 1px solid var(--border-color);
-    background-color: var(--border-color);
+    border: 1px solid #ccc;
+    color: #333;
+    background-color: #e5e5e5;
 
     &:focus, &:hover {
-      background-color: var(--bg-color);
+      background-color: #ddd;
     }
 
     &:active {

@@ -1,5 +1,6 @@
 .header {
   background: linear-gradient(90deg, var(--base-color2), var(--base-color1));
+  padding: 7px 0;
 }
 
 .inner {
@@ -10,7 +11,7 @@
 
 .logo {
   display: inline-block;
-  padding: 3px 0;
   font-size: 1.7rem;
+  line-height: 1em;
   color: #fff;
 }
