@@ -7,13 +7,13 @@
   width: 100%;
   font-size: 1rem;
 
-  input[type=checkbox] {
+  input[type="checkbox"] {
     margin: 0 15px 7px 0;
     visibility: hidden;
-    
+
     &:checked + label::after,
     &:not(:checked) + label::after {
-      content: '\2713';
+      content: "\2713";
       position: absolute;
       top: -0.55rem;
       left: 0.1rem;
@@ -40,7 +40,7 @@
     cursor: pointer;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -74,7 +74,7 @@
   top: -6px;
   right: -6px;
   display: flex;
-  align-items: center;  
+  align-items: center;
   justify-content: flex-end;
   border-radius: 5px;
 
@@ -86,6 +86,6 @@
 .done {
   .text {
     text-decoration: line-through;
-    opacity: 50%;
+    opacity: var(--done-opacity);
   }
 }

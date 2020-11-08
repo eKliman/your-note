@@ -1,17 +1,18 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import Button from '../UI/Button/Button'
 import LinkButton from '../UI/LinkButton/LinkButton'
 import ThemeSwitch from '../UI/ThemeSwitch/ThemeSwitch'
 import { logout } from '../../store/actions/auth'
 import classes from './Header.module.scss'
 
-const Header = () => {
+const Header = props => {
   const dispatch = useDispatch()
   const token = useSelector(state => state.auth.token)
   const logOutHandler = () => {
     dispatch(logout())
+    props.history.push('/')
   }
   
   return (
@@ -46,4 +47,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default withRouter(Header)

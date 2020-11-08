@@ -1,3 +1,6 @@
+import 'react-app-polyfill/ie11'
+import 'react-app-polyfill/stable'
+import cssVars from 'css-vars-ponyfill';
 import React from 'react'
 import ReactDOM from 'react-dom'
 import * as serviceWorker from './serviceWorker'
@@ -18,6 +21,9 @@ const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(thunk))
 ) 
+
+// provides client-side support for CSS variables (for legacy browsers)
+cssVars({})
 
 ReactDOM.render(
   <React.StrictMode>

@@ -130,7 +130,7 @@
   }
 
   &:disabled {
-    opacity: 40%;
+    opacity: var(--done-opacity);
     border: 1px solid var(--border-color);
     background-color: inherit;
     box-shadow: inherit;

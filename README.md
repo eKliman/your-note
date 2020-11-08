@@ -1,68 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Your-note
 
-## Available Scripts
+To see the application in action click [here.](https://your-note-5aadc.web.app/ "Your-note")
 
-In the project directory, you can run:
+**"Your-note"** is a SPA application for creating notes.
+Each **_note has a title and task list_** (todo list), then - Todo.
+Each item of the Todo consists of a checkbox and the text signature associated with it.
 
-### `yarn start`
+In the application, you can switch between **_light_** and **_dark themes_**.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The application consists of 3 pages:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- home page;
+- a page of creating/editing a note;
+- login page.
 
-### `yarn test`
+**The main page** displays the list of all notes.
+For each note, you will see a title and a list of tasks shortened to two items without the possibility to mark their execution.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**_Actions on the main page:_**
 
-### `yarn build`
+- proceed to creation of a new note;
+- proceed to the change;
+- delete (confirmation is required);
+- sorting of notes (newest, oldest).
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**The note editing page** allows you to create a new note or edit an existing note.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+**_Actions with note:_**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- edit title of the note,
+- undo the change made;
+- repeat the undone change;
+- cancel all the changes you have made (confirmation is required);
+- save;
+- delete (confirmation is required).
 
-### `yarn eject`
+**_Actions with Todo points:_**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- add;
+- delete;
+- edit text;
+- undo the change you made;
+- repeat the undone change;
+- mark as done;
+- sorting of Todos (newest, oldest, done, in progress).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**The authorization page** allows a user to register or log in.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**_Actions on the login page:_**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- enter Email, validate it;
+- enter a password, validate it;
+- login;
+- sign up.
 
-## Learn More
+### Storage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can work in the application even without registration. In this case, notes are stored in **_LocalStorage_**.
+After user authorization, the application starts working with **_Firebase Realtime Database_**, saving information to the server. Each authorized user has access only to his own notes.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### The following technical means were used in the development
 
-### Code Splitting
+- HTML/SCSS/JavaScript
+- React (Hooks)
+- Redux/redux-thunk
+- Fetch API
+- Webpack
+- Firebase
+- LocalStorage
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The application is adaptive for different screen resolutions. Supports IE11 (only light theme).
+Deployed on Firebase Hosting.
+This project was bootstrapped with Create React App.

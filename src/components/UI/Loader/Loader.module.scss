@@ -1,19 +1,16 @@
 .Loader {
-  --size: 75px;
-  --animation-duration: 1000ms;
-
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: var(--size);
-  height: var(--size);
+  width: 75px;
+  height: 75px;
   margin: 0 auto;
 
   div {
-    width: calc(var(--size) / 12);
+    width: calc(75px / 12);
     height: 80%;
-    background: var(--clr-spinner);
-    animation: spinner1 var(--animation-duration) ease-in-out infinite;
+    background: var(--mainBorder-color);
+    animation: spinner1 1000ms ease-in-out infinite;
 
     @keyframes spinner1 {
       50% {
@@ -23,27 +20,22 @@
   }
 
   div:nth-child(1) {
-    --clr-spinner: var(--mainBorder-color);
-    animation-delay: calc(var(--animation-duration) / 10 * -3);
+    animation-delay: calc(1000ms / 10 * -3);
   }
 
   div:nth-child(2) {
-    --clr-spinner: var(--mainBorder-color);
-    animation-delay: calc(var(--animation-duration) / 10 * -1);
+    animation-delay: calc(1000ms / 10 * -1);
   }
 
   div:nth-child(3) {
-    --clr-spinner: var(--mainBorder-color);
-    animation-delay: calc(var(--animation-duration) / 10 * -2);
+    animation-delay: calc(1000ms / 10 * -2);
   }
 
   div:nth-child(4) {
-    --clr-spinner: var(--mainBorder-color);
-    animation-delay: calc(var(--animation-duration) / 10 * -1);
+    animation-delay: calc(1000ms / 10 * -1);
   }
 
   div:nth-child(5) {
-    --clr-spinner: var(--mainBorder-color);
-    animation-delay: calc(var(--animation-duration) / 10 * -3);
+    animation-delay: calc(1000ms / 10 * -3);
   }
 }
