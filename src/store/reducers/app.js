@@ -1,11 +1,15 @@
-import { SET_THEME } from "../actions/actionTypes"
+import { SET_THEME, SET_LOADING, SET_ALERT } from "../actions/actionTypes"
 
 const initialState = {
-  darkTheme: false
+  darkTheme: false,
+  loading: false,
+  alertText: ''
 }
 
 const handlers = {
   [SET_THEME]: (state, action) => ({...state, darkTheme: action.payload}),
+  [SET_LOADING]: (state, action) => ({...state, loading: action.payload}),
+  [SET_ALERT]: (state, action) => ({...state, alertText: action.payload}),
   DEFAULT: state => state
 }
 

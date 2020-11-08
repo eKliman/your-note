@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { 
   setIdEditingTodo, 
   setIsTitleEditing, 
@@ -12,7 +13,7 @@ import Input from '../Input/Input'
 import LinkButton from '../LinkButton/LinkButton'
 import classes from './ModalInput.module.scss'
 
-const ModalInput = () => {
+const ModalInput = props => {
   const dispatch = useDispatch()
   const inputRef = useRef(null)
   const note = useSelector(state => state.note)
@@ -44,9 +45,10 @@ const ModalInput = () => {
     label = 'Enter your task:'
   }
 
-  const changeHandler = val => {
-    setDisabled(!val)
-    setValue(val)
+  const changeHandler = event => {
+    const value = event.target.value
+    setDisabled(!value)
+    setValue(value)
   }
 
   const submitHandler = event => {
@@ -111,6 +113,10 @@ const ModalInput = () => {
     dispatch(setIdEditingTodo(''))
   }
 
+  const toMainHandler = () => {
+    props.history.push('/')
+  }
+
   return (
     <>
       <form 
@@ -120,8 +126,9 @@ const ModalInput = () => {
         <Input 
           label={label}
           changeHandler={changeHandler}
-          inputRef={inputRef}
+          focus={inputRef}
           value={value}
+          shouldValidate={false}
         />
 
         <div className={classes.buttons}>
@@ -151,9 +158,11 @@ const ModalInput = () => {
         </div>
       </form>
 
-      <Backdrop />
+      <Backdrop 
+        clickHandler={(isTitleEditing && !noteTitle) ? toMainHandler : cancelHandler}
+      />
     </>
   )
 }
 
-export default ModalInput
+export default withRouter(ModalInput)

@@ -4,6 +4,9 @@ import {
   SET_UNDO_NOTE_ID,
   SET_SORTING_NOTELIST
 } from './actionTypes'
+import { sendRequest } from '../../utils/fetch'
+import { setAlert, setLoading } from './app'
+import { setIsTitleEditing, setNoteTitle, setTodos } from './note'
 
 export const setNotes = payload => (
   {
@@ -55,3 +58,52 @@ export const setSortingNoteList = payload => (
     payload
   }
 )
+
+export const getNotesFromServer = () => {
+  return async (dispatch, getState) => {
+    dispatch(setLoading(true))
+    const link = `notes/${getState().auth.userId}.json`
+    try {
+      const response = await sendRequest('GET', link) || {}
+      if (response.error) {
+        dispatch(setAlert(`${response.error}. Please reload the page and try again.`))
+        setTimeout(() => dispatch(setAlert('')), 7000)
+        return 
+      }
+      Object.keys(response).forEach(key => {
+        if (!response[key].todos) {
+          response[key].todos = {}
+        }
+      })
+      dispatch(setNotes(response))
+    } catch (e) {
+      dispatch(setAlert(`${e}. Please reload the page and try again.`))
+      setTimeout(() => dispatch(setAlert('')), 7000)
+    } finally {
+      dispatch(setLoading(false))
+    }
+  } 
+}
+
+export const getNoteFromServerById = id => {
+  return async (dispatch, getState) => {
+    dispatch(setLoading(true))
+    try {
+      const response = await sendRequest('GET', `notes/${getState().auth.userId}/${id}.json`)
+
+      if (response.error) {
+        dispatch(setAlert(`${response.error}. Please reload the page and try again.`))
+        setTimeout(() => dispatch(setAlert('')), 7000)
+        return 
+      }
+      dispatch(setNoteTitle(response.title))
+      dispatch(setTodos(response.todos || {}))
+      dispatch(setIsTitleEditing(false))
+    } catch (e) {
+      dispatch(setAlert(`${e}. Please reload the page and try again.`))
+      setTimeout(() => dispatch(setAlert('')), 7000)
+    } finally {
+      dispatch(setLoading(false))
+    }
+  }
+}

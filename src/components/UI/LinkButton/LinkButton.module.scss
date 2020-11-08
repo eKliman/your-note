@@ -9,8 +9,47 @@
   transition: 0.3s;
   cursor: pointer;
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     outline: none;
+  }
+}
+
+.primary {
+  border: 1px solid #0077b6;
+  background-color: #0077b6;
+  box-shadow: 2px 2px 2px #023e8a;
+  color: #fff;
+
+  &:focus,
+  &:hover {
+    border: 1px solid #023e8a;
+    background-color: #023e8a;
+  }
+
+  &:active {
+    box-shadow: inset 2px 2px 2px #03045e;
+  }
+}
+
+.logIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1.8rem;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+  }
+
+  &:active {
+    transform: scale(0.85);
   }
 }
 
@@ -18,8 +57,9 @@
   border: 1px solid var(--danger-color);
   background-color: var(--danger-color);
   color: #fff;
-  
-  &:focus, &:hover {
+
+  &:focus,
+  &:hover {
     border: 1px solid #d43c00;
     background-color: #d43c00;
   }
@@ -40,7 +80,8 @@
   font-size: 1.1rem;
   font-weight: 700;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     outline: none;
     background-color: var(--hover-color);
     color: #0fc41f;
