@@ -28,8 +28,8 @@ const NoteList = () => {
         >
           <h3>{noteList[key].title}</h3>
           <ul>
-          {(Object.keys(noteList[key].todos).slice(0, 2)).map(todoKey => (
-            <li key={todoKey} className={classes.todo}>&#10004; {noteList[key].todos[todoKey].text}</li>
+            {(Object.keys(noteList[key].todos).slice(0, 2)).map(todoKey => (
+              <li key={todoKey} className={classes.todo}>&#10004; {noteList[key].todos[todoKey].text}</li>
             ))}
             {(Object.keys(noteList[key].todos).length > 2) && <span className={classes.etc}>&#10004; <b>. . .</b></span>}
           </ul>

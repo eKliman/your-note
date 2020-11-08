@@ -9,137 +9,175 @@
   transition: 0.3s;
   cursor: pointer;
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     outline: none;
+  }
+
+  &:disabled {
+    border: 1px solid var(--border-color);
+    background-color: var(--border-color);
+    box-shadow: 2px 2px 2px var(--border-color);
+    color: var(--text-color);
+    cursor: not-allowed;
   }
 }
 
-  .success {
-    border: 1px solid var(--success-color);
-    background-color: var(--success-color);
-    box-shadow: 2px 2px 2px #006609;
-    color: #fff;
+.success {
+  border: 1px solid var(--success-color);
+  background-color: var(--success-color);
+  box-shadow: 2px 2px 2px #006609;
+  color: #fff;
 
-    &:focus, &:hover:enabled {
-      border: 1px solid #02a510;
-      background-color: #02a510;
-    }
-
-    &:active {
-      box-shadow: inset 2px 2px 2px #006609;
-    }
-
-    &:disabled {
-      border: 1px solid var(--border-color);
-      background-color: var(--border-color);
-      box-shadow: 2px 2px 2px var(--border-color);
-      color: var(--text-color);
-      cursor: not-allowed;
-    }
+  &:focus,
+  &:hover:enabled {
+    border: 1px solid #02a510;
+    background-color: #02a510;
   }
 
-  .secondary {
-    border: 1px solid #ccc;
-    color: #333;
-    background-color: #e5e5e5;
+  &:active {
+    box-shadow: inset 2px 2px 2px #006609;
+  }
+}
 
-    &:focus, &:hover {
-      background-color: #ddd;
-    }
+.primary {
+  border: 1px solid #0077b6;
+  background-color: #0077b6;
+  box-shadow: 2px 2px 2px #023e8a;
+  color: #fff;
 
-    &:active {
-      box-shadow: inset 2px 2px 2px var(--border-color);
-    }
+  &:focus,
+  &:hover:enabled {
+    border: 1px solid #023e8a;
+    background-color: #023e8a;
   }
 
-  .deleteIcon, .btnIcon {
+  &:active {
+    box-shadow: inset 2px 2px 2px #03045e;
+  }
+}
+
+.secondary {
+  border: 1px solid #ccc;
+  color: #333;
+  background-color: #e5e5e5;
+
+  &:focus,
+  &:hover {
+    background-color: #ddd;
+  }
+
+  &:active {
+    box-shadow: inset 2px 2px 2px var(--border-color);
+  }
+}
+
+.deleteIcon,
+.btnIcon,
+.logIcon {
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  box-shadow: none;
+  padding: 5px 5px 4px 5px;
+  color: var(--text-color);
+  font-size: 1.2rem;
+
+  &:active {
+    transform: scale(0.85);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--hover-color);
+  }
+}
+
+.logIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1.8rem;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+  }
+}
+
+.deleteIcon {
+  &:hover,
+  &:focus {
+    color: var(--danger-color);
+  }
+
+  &:active {
+    color: var(--danger-color);
+  }
+}
+
+.btnIcon {
+  &:hover:enabled,
+  &:focus {
+    color: #0fc41f;
+  }
+
+  &:active {
+    color: #0fc41f;
+  }
+
+  &:disabled {
+    opacity: 40%;
     border: 1px solid var(--border-color);
-    background-color: var(--bg-color);
-    box-shadow: none;
-    padding: 5px 5px 4px 5px;
-    color: var(--text-color);
-    font-size: 1.2rem;
+    background-color: inherit;
+    box-shadow: inherit;
+    color: inherit;
+  }
+}
 
-    &:active {
-      transform: scale(0.85);
-    }
+.danger {
+  border: 1px solid var(--danger-color);
+  background-color: var(--danger-color);
+  box-shadow: 2px 2px 2px #992c00;
+  color: #fff;
 
-    &:hover, &:focus {
-      background-color: var(--hover-color);
-    }
+  &:focus,
+  &:hover:enabled {
+    border: 1px solid #d43c00;
+    background-color: #d43c00;
   }
 
-  .deleteIcon {
-    &:hover, &:focus {
-      color: var(--danger-color);
-    }
+  &:active {
+    box-shadow: inset 2px 2px 2px #992c00;
+  }
+}
 
-    &:active {
-      color: var(--danger-color);
-    }
+.add {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--addBtn-color);
+  border-radius: 50px;
+  padding: 7px 20px;
+  box-shadow: 2px 2px 2px var(--addBtn-color);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
+  &:hover,
+  &:focus {
+    outline: none;
+    background-color: var(--hover-color);
+    color: #0fc41f;
   }
 
-  .btnIcon {
-    &:hover:enabled, &:focus {
-      color: #0fc41f;;
-    }
-
-    &:active {
-      color: #0fc41f;;
-    }
-
-    &:disabled {
-      opacity: 50%;
-      cursor: not-allowed;
-    }
+  &:active {
+    box-shadow: inset 2px 2px 2px var(--addBtn-color);
   }
 
-  .danger {
-    border: 1px solid var(--danger-color);
-    background-color: var(--danger-color);
-    box-shadow: 2px 2px 2px #992c00;
-    color: #fff;
-    
-    &:focus, &:hover {
-      border: 1px solid #d43c00;
-      background-color: #d43c00;
-    }
-
-    &:active {
-      box-shadow: inset 2px 2px 2px #992c00;
-    }
-
-    &:disabled {
-      border: 1px solid var(--border-color);
-      background-color: var(--border-color);
-      box-shadow: 2px 2px 2px var(--border-color);
-      color: var(--text-color);
-      cursor: not-allowed;
-    }
+  span {
+    margin-right: 7px;
+    color: var(--success-color);
   }
-
-  .add {
-    display: flex;
-    align-items: center;
-    border: 1px solid var(--addBtn-color);
-    border-radius: 50px;
-    padding: 7px 20px;
-    box-shadow: 2px 2px 2px var(--addBtn-color);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-  
-    &:hover, &:focus {
-      outline: none;
-      background-color: var(--hover-color);
-      color: #0fc41f;
-    }
-  
-    &:active {
-      box-shadow: inset 2px 2px 2px var(--addBtn-color);
-    }
-  
-    span {
-      margin-right: 7px;
-      color: var(--success-color);
-    }
-  }
+}

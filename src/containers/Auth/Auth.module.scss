@@ -1,0 +1,35 @@
+.auth {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px 20px 20px 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  background: linear-gradient(
+    to bottom,
+    var(--bg-color) 0%,
+    var(--authBg-color) 100%
+  );
+  box-shadow: 2px 2px 3px var(--border-color);
+  color: var(--text-color);
+
+  h2 {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+  }
+}
+
+.buttons {
+  margin-top: 15px;
+  button + button {
+    margin-left: 15px;
+  }
+}
+
+.error {
+  color: var(--danger-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}

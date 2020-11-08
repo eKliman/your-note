@@ -9,9 +9,11 @@ import {
 } from '../../../store/actions/note'
 import { 
   deleteFromStorage, 
+  getNotesFromServer, 
   setNoteIdToDelete, 
   setUndoNoteId 
 } from '../../../store/actions/noteList'
+import { deleteNote } from '../../../utils/fetch'
 import Backdrop from '../Backdrop/Backdrop'
 import Button from '../Button/Button'
 import classes from './Confirmation.module.scss'
@@ -21,9 +23,17 @@ const Confirmation = ({history}) => {
   const noteList = useSelector(state => state.noteList.notes)
   const deletionId = useSelector(state => state.noteList.deletionId)
   const undoId = useSelector(state => state.noteList.undoId)
+  const token = useSelector(state => state.auth.token)
+  const userId = useSelector(state => state.auth.userId)
 
-  const deleteHandler = () => {
-    dispatch(deleteFromStorage(deletionId))
+  const deleteHandler = async () => {
+    if (token) {
+      await deleteNote(userId, deletionId, token)
+      dispatch(setNoteIdToDelete(''))
+      dispatch(getNotesFromServer())
+    } else {
+      dispatch(deleteFromStorage(deletionId))
+    }
     history.push('/')
   }
 
